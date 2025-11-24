@@ -1,0 +1,110 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct colony_number {
+    int people;
+    
+    char name_of_colony[39];
+    float per_house_population;
+};
+
+int main() {
+    struct colony_number colony[5];
+    int i, j, c,data,k;//k = data
+    struct colony_number temp;  // Declare a temporary variable for swapping
+
+    while (1) {
+        
+        printf("Menu:\n");
+        printf("1. Add entry\n");
+        printf("2. Display records\n");
+        printf("3. Sort records\n");
+        printf("4. Search record\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &c);
+
+        switch(c) {
+            case 1: k=data;
+            printf("k");
+            scanf("%d",&k);
+            
+            
+            
+            
+            
+            
+                for (i = 0; i < k; i++) {
+                    printf("Enter details for colony %d\n", i + 1);
+                    printf("Name of colony: ");
+                    scanf("%s", colony[i].name_of_colony);
+                    printf("People: ");
+                    scanf("%d", &colony[i].people);
+                    printf("Per house population: ");
+                    scanf("%f", &colony[i].per_house_population);
+                }
+                break;
+
+            case 2:                  printf("\n--- Colony Details ---\n");
+                printf("%-20s %-10s %-10s\n", "Colony Name", "People", "Per House Pop.");
+                printf("--------------------------------------------\n");
+                for (i = 0; i < k; i++) {
+                    printf("%-20s %-10d %-10.2f\n", colony[i].name_of_colony, colony[i].people, colony[i].per_house_population);
+                }
+                break;
+
+            case 3:  // Sort records by number of people (Descending)
+                for (i = 0; i < (k-1); i++) {
+                    for (j = i + 1; j < k; j++) {
+                        if (colony[i].people < colony[j].people) {
+                            // Swap colonies
+                            temp = colony[i];
+                            colony[i] = colony[j];
+                            colony[j] = temp;
+                        }
+                    }
+                }
+                printf("\n--- Sorted Colony Details (Descending by People) ---\n");
+                printf("%-20s %-10s %-10s\n", "Colony Name", "People", "Per House Pop.");
+                printf("--------------------------------------------\n");
+                for (i = 0; i < k; i++) {
+                    printf("%-20s %-10d %-10.2f\n", colony[i].name_of_colony, colony[i].people, colony[i].per_house_population);
+                }
+                break;
+
+            case 4:
+                char search_name_of_colony[39];
+printf("Enter colony name to search: ");
+scanf("%38s", search_name_of_colony);
+
+int found = 0;
+
+for (i = 0; i < k; i++) {
+    if (strcmp(colony[i].name_of_colony, search_name_of_colony) == 0) {
+        printf("Record found: %-20s %-10d %-10.2f\n",
+               colony[i].name_of_colony,
+               colony[i].people,
+               colony[i].per_house_population);
+        found = 1;
+        break;
+    }
+}
+
+if (!found) {
+    printf("No colony found with name %s\n", search_name_of_colony);
+}
+
+            case 5:  
+                printf("Exiting the program.\n");
+                exit(0);
+
+            default:
+                printf("Invalid choice! Please select a valid option.\n");
+        }
+    }
+
+    return 0;
+}
+
