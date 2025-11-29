@@ -1,6 +1,4 @@
-Menu:
-1. Add entry
-2. #include <stdio.h>
+ #include <stdio.h>
 
 struct colony_number {
     int people;
